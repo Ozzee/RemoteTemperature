@@ -1,11 +1,6 @@
-/* Sweep
- by BARRAGAN <http://barraganstudio.com>
- This example code is in the public domain.
-
- modified 8 Nov 2013
- by Scott Fitzgerald
- http://www.arduino.cc/en/Tutorial/Sweep
-*/
+/* 
+ * Show the temperature by setting a servo to a certain position
+ */
 
 #include <Servo.h>
 #include <ESP8266WiFi.h>
@@ -18,10 +13,9 @@ const char* password = "isitfriday";
 
 ESP8266WebServer server(80);
 
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
+Servo temperatureServo;
 
-int pos = 0;    // variable to store the servo position
+int pos = 0;    // Servo position
 
 void handleRoot() {
   digitalWrite(LED_BUILTIN, HIGH);
@@ -32,9 +26,8 @@ void handleRoot() {
   } else if (value > 180) {
     value = 180;
   }
-
   
-  myservo.write(180-value);
+  temperatureServo.write(180-value);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
@@ -62,8 +55,8 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   
-  myservo.attach(5);  // attaches the servo on pin 9 to the servo object
-  myservo.write(0);
+  temperatureServo.attach(5); // PIN5
+  temperatureServo.write(0);
 
   Serial.println();
   Serial.println();

@@ -1,9 +1,5 @@
 /*
- *  This sketch sends data via HTTP GET requests to data.sparkfun.com service.
- *
- *  You need to get streamId and privateKey at data.sparkfun.com and paste them
- *  below. Or just customize this script to talk to other HTTP servers.
- *
+ *  Send the current temperature as a GET request
  */
 
 #include <ESP8266WiFi.h>
@@ -31,8 +27,6 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 
   sensors.begin();
-
-  // We start by connecting to a WiFi network
 
   Serial.println();
   Serial.println();
